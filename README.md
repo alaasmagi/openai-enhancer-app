@@ -53,15 +53,12 @@ I have been searching for opportunity to use Vue.js rather than React. I thought
 ### The use of Tailwind CSS
 * Customisation and responsiveness can be improved by the use of Tailwind CSS.
 
-### Error handling
-* Error handling could be better with detailed error coding system and translation files that translate them to different languages.
+### More AI models as options
+* As OpenAI develops more and more different AI models, they could be added in this openai-enhancer-app as options.
 
-
-### Fetching data from one of real flight company APIs
-* Application could be made to fetch data from real world flight company API to get real world flight data making the UX more realistic.
 ### Mobile Application
 * Separate mobile application could be made with React Native or Flutter to make UX better on mobile interfaces.
 
 ## Assistance used during this project
-* [YouTube video](https://www.youtube.com/watch?v=O_XL9oQ1_To&list=WL&index=3&t=620s)- to learn the main differences and approaches of building good Java and Spring Boot fullstack web application.
-* [Google Gemini](https://gemini.google.com/)- it helped me hustling with date and time formats.
+* [YouTube video 1](https://www.youtube.com/watch?v=SccSCuHhOw0)- it helped me to learn building servers with Express.js.
+* [YouTube video 2](https://www.youtube.com/watch?v=gs9pvCfLSAk)- it helped me to learn the basics of Vue.js.
