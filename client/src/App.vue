@@ -4,11 +4,12 @@ import InitialForm from './components/InitialForm.vue'
 
 <template>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    </a>
+    <img src="./assets/add.png" class="logo" alt="Vue logo" />
+    <a href="https://platform.openai.com/" target="_blank">
+      <img src="https://platform.openai.com/favicon-platform.svg" class="logo openai" alt="OpenAI logo" />
     </a>
   </div>
   <InitialForm/>
@@ -16,12 +17,12 @@ import InitialForm from './components/InitialForm.vue'
 
 <style scoped>
 .logo {
-  height: 6em;
+  height: 4em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+.logo.openai:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.vue:hover {

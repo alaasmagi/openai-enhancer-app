@@ -11,8 +11,7 @@ app.use(express.json());
 
 app.post("/api/enhance", async (req, res) => {
   const { initial_prompt, improvement_prompt, iterations, model } = req.body;
-  let current_prompt = initial_prompt;
-
+  let current_prompt:string = initial_prompt;
   try {
     for (let i = 0; i < iterations; i++) {
       const response = await axios.post(
@@ -26,7 +25,7 @@ app.post("/api/enhance", async (req, res) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            Authorization: `Bearer ${process.env.API_KEY}`,
             "Content-Type": "application/json"
           }
         }
@@ -41,11 +40,13 @@ app.post("/api/enhance", async (req, res) => {
       model_used: model
     });
   } catch (error: any) {
+    res.json({
+      error: `OpenAI API error: ${error.message}`
+    });
     console.error("OpenAI API error:", error.message);
-    res.status(500).json({ error: "Something went wrong with OpenAI API" });
   }
 });
 
-app.listen(3001, () => {
-  console.log("Server running on http://localhost:3001");
+app.listen(process.env.VITE_SERVER_PORT ?? 3001, () => {
+  console.log(`Server running on http://localhost:${process.env.VITE_SERVER_PORT ?? 3001}`);
 });

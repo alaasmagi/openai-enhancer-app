@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const initialPrompt = ref('')
-const improvementPrompt = ref('')
-const iterations = ref(1)
-const model = ref('gpt-3.5-turbo')
-const result = ref('')
-const loading = ref(false)
+const initialPrompt = ref<string | null>(null);
+const improvementPrompt = ref<string | null>(null);
+const iterations = ref<number>(1)
+const model = ref<string>('gpt-3.5-turbo')
+const result = ref<string | null>(null);
+const error = ref<string | null>(null);
+const loading = ref<boolean>(false)
 
 const enhancePrompt = async () => {
   loading.value = true
-  const response = await fetch('http://localhost:3001/api/enhance', {
+  const response = await fetch(`http://localhost:${import.meta.env.VITE_SERVER_PORT ?? 3001}/api/enhance`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -21,8 +22,14 @@ const enhancePrompt = async () => {
     })
   })
 
-  const data = await response.json()
-  result.value = data.final_prompt
+  const data = await response.json();
+  if (data.error) {
+    error.value = data.error;
+    result.value = null;
+  } else {
+    error.value = null;
+    result.value = data;  
+  }
   loading.value = false
 }
 </script>
@@ -31,7 +38,7 @@ const enhancePrompt = async () => {
   <div class="prompt-form">
     <h2>OpenAI Prompt Enhancer</h2>
     <label>Initial Prompt:</label>
-    <textarea v-model="initialPrompt" rows="3" />
+    <textarea v-model="initialPrompt" rows="3"/>
     <label>Improvement Prompt:</label>
     <textarea v-model="improvementPrompt" rows="2" />
     <label>Iterations:</label>
@@ -49,29 +56,40 @@ const enhancePrompt = async () => {
       <h3>Final Prompt:</h3>
       <pre>{{ result }}</pre>
     </div>
+    <div v-if="error">
+      <label class="error">{{ error }}</label>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .prompt-form {
-  max-width: 600px;
+  width: 400px;
   margin: 0 auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-textarea,
-input,
-select {
-  width: 100%;
-}
 button {
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
+  background-color: #0e1118;
+  font-size: 18px;
+  font-weight: 700;
 }
 pre {
   background: #f4f4f4;
   padding: 1rem;
   white-space: pre-wrap;
+}
+label {
+  align-self: self-start;
+}
+pre {
+  background-color: inherit;
+}
+.error {
+  color:red;
+  font-size: 18;
 }
 </style>
