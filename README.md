@@ -24,16 +24,16 @@ If You want to change it, add the VITE_SERVER_PORT line with your desired port i
 ### Running the app
 
 After meeting all prerequisites above - 
+* frontend can be run via terminal/cmd by commands
+```bash
+npm i
+npm run dev 
+```
 * backend can be run via terminal/cmd by commands
 ```bash
 cd server
 npm i
 npx ts-node index.ts
-```
-* frontend can be run via terminal/cmd by commands
-```bash
-npm i
-npm run dev 
 ```
 
 ## Structure
