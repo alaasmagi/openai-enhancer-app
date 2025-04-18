@@ -13,7 +13,7 @@
 * Node.js 
 * Modern web browser
 
-Server should have .env file in the root of server folder (/server) and it shoult have following content:
+Server should have .env file in the root of server folder `/server` and it shoult have following content:
 ```bash
 API_KEY=<your-openai-api-key>
 VITE_SERVER_PORT=<whatever-port-you-want-the-backend-to-run-on>
