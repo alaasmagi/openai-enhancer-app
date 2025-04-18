@@ -5,7 +5,7 @@
 * UI language: English
 * Development year: **2025**
 * Languages and technologies: **Server: Express.js, TypeScript, OpenAI Chat Completions API & Frontend: Vite, Vue.js, TypeScript**  
-* * Integratrion with [OpenAI API](https://platform.openai.com/docs/overview)
+* Integratrion with [OpenAI API](https://platform.openai.com/docs/overview)
 
 ## How to run
 
